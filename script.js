@@ -1,9 +1,11 @@
 //Select elements
+const div=document.querySelector('div');
 const button=document.querySelectorAll(".choiceButton");
 const result=document.querySelector(".result");
 const resetGame=document.querySelector(".btn");
 let player=document.querySelector('#player');
 let computer=document.querySelector('#computer');
+let resultPara=document.createElement('p');
 //receives player choice
 let playerSelection;
 //receives computer choice
@@ -57,7 +59,14 @@ resetGame.addEventListener("click",()=>{
         button.disabled=false;
     }
     )
+    player.textContent=`player ${playerScore}`;
+    computer.textContent=`computer ${computerScore}`;
+    resultPara.textContent='';
 })
+
+
+
+
 
 //Disable button when a player reach 5 points 
 function disableButton(){
@@ -66,7 +75,6 @@ function disableButton(){
         button.disabled=true;
     }
     )
-
 }
 
 //Get's user choice and play the round
@@ -74,24 +82,23 @@ button.forEach((button) => {
     button.addEventListener("click",()=>{
       playerSelection=button.value;
       computerSelection=getComputerChoice();
-      //let resultPara=document.createElement('p');
       //resultPara.textContent=playRound(computerSelection,playerSelection) + ' Player Score ' + playerScore + ' Computer Score ' + computerScore; 
-     // result.appendChild(resultPara);
+     result.appendChild(resultPara);
       //console.log(playerScore,'pc',computerScore,playerSelection,computerSelection);
       playRound(computerSelection,playerSelection)
       player.textContent=`player ${playerScore}`;
       computer.textContent=`computer ${computerScore}`;
       if(computerScore==5 || playerScore==5){
-        //computerScore==5 ? resultPara.textContent = 'You Lose! Computer Score ' + computerScore + ' x  Your Score '+ playerScore : resultPara.textContent = 'You Win! Computer Score ' + computerScore + ' x  Your Score '+ playerScore ;
+       computerScore==5 ? resultPara.textContent = 'You Lose! Computer Score ' + computerScore + ' x  Your Score '+ playerScore : resultPara.textContent = 'You Win! Computer Score ' + computerScore + ' x  Your Score '+ playerScore ;
          disableButton();
          computerScore=0;
          playerScore=0;
+         
       }
+     
     });
    
 });
-
-
 
 
 
