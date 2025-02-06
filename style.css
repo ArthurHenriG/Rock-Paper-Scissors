@@ -3,8 +3,32 @@
     margin: 0;
 }
 
-.result{
+body{
+    background-color: rgb(17, 24, 39);
+    min-height: 100vh;
     display: flex;
-    gap: 3rem;
-    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+main{
+display: flex;
+flex-direction: column;
+gap: 2rem;
+background-color: rgb(31, 41, 55);
+padding: 2rem;
+border: none;
+border-radius: 10px;
+}
+
+button{
+    border:none;
+    border-radius: 3px;
+    background-color: green;
+}
+
+.counter{
+    display: flex;
+    gap: 1rem ;
 }

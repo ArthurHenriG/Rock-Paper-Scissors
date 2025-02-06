@@ -6,6 +6,9 @@ const resetGame=document.querySelector(".btn");
 let player=document.querySelector('#player');
 let computer=document.querySelector('#computer');
 let resultPara=document.createElement('p');
+
+result.appendChild(resultPara);
+
 //receives player choice
 let playerSelection;
 //receives computer choice
@@ -65,9 +68,6 @@ resetGame.addEventListener("click",()=>{
 })
 
 
-
-
-
 //Disable button when a player reach 5 points 
 function disableButton(){
 
@@ -82,12 +82,9 @@ button.forEach((button) => {
     button.addEventListener("click",()=>{
       playerSelection=button.value;
       computerSelection=getComputerChoice();
-      //resultPara.textContent=playRound(computerSelection,playerSelection) + ' Player Score ' + playerScore + ' Computer Score ' + computerScore; 
-     result.appendChild(resultPara);
-      //console.log(playerScore,'pc',computerScore,playerSelection,computerSelection);
       playRound(computerSelection,playerSelection)
-      player.textContent=`player ${playerScore}`;
-      computer.textContent=`computer ${computerScore}`;
+      player.textContent=`player : ${playerScore}`;
+      computer.textContent=`computer : ${computerScore}`;
       if(computerScore==5 || playerScore==5){
        computerScore==5 ? resultPara.textContent = 'You Lose! Computer Score ' + computerScore + ' x  Your Score '+ playerScore : resultPara.textContent = 'You Win! Computer Score ' + computerScore + ' x  Your Score '+ playerScore ;
          disableButton();
